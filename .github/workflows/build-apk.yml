@@ -31,6 +31,23 @@ jobs:
           # Қосымша атауы
           sed -i 's/android:label="alan"/android:label="Алаң"/' android/app/src/main/AndroidManifest.xml
 
+      - name: Иконка қою
+        run: |
+          mkdir -p assets/icon
+          cp icon_1024.png assets/icon/icon_1024.png
+          cp icon_foreground.png assets/icon/icon_foreground.png
+          flutter pub add --dev flutter_launcher_icons
+          cat >> pubspec.yaml << 'EOF'
+
+          flutter_launcher_icons:
+            android: true
+            ios: false
+            image_path: "assets/icon/icon_1024.png"
+            adaptive_icon_background: "#283593"
+            adaptive_icon_foreground: "assets/icon/icon_foreground.png"
+          EOF
+          dart run flutter_launcher_icons
+
       - name: APK жинау
         run: flutter build apk --release
 
