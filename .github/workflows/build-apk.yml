@@ -24,7 +24,7 @@ jobs:
       - name: Flutter жобасын құру және кодты қою
         run: |
           flutter create --project-name alan --org kz.alan --platforms=android .
-          cp main_3.dart lib/main.dart
+          cp alan_app.dart lib/main.dart
           flutter pub add shared_preferences path_provider pdf share_plus image_picker firebase_core cloud_firestore
           # Firebase пакеттері үшін minSdk 23 керек
           sed -i 's/minSdk = flutter.minSdkVersion/minSdk = 23/; s/minSdkVersion flutter.minSdkVersion/minSdkVersion 23/' android/app/build.gradle*
